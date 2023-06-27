@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
 from base.forms import RoomForm
 from .models import Room, Topic
@@ -61,8 +62,18 @@ def Discuss_logout(request):
     return redirect("home")
 
 def discuss_register(request):
-    page = 'register'
-    context = {'register': page}
+    form = UserCreationForm()
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, "Error during registration ")
+    context = {'form': form}
     return render(request, 'base/login_register.html', context)
 
 
