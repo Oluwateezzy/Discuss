@@ -1,16 +1,33 @@
+{% load static %}
 <div class="navbar">
-  <div>
-    <a href="/">
-      <h1>DisCuss</h1>
-    </a>
+  <div class="image">
+    <h1><a href="/">
+      Discuss
+      <!-- <img src="{% static 'images/cover.png' %}" alt="" /> -->
+    </a></h1>
   </div>
 
-  <div>
+  <!-- <div> -->
+  <div class="input-group">
     <form action="{% url 'home' %}" method="GET">
-      <input type="text" name="q" placeholder="Search Rooms...." />
+      <input
+        value=""
+        class="form-control"
+        type="text"
+        name="q"
+        placeholder="Search Rooms...."
+      />
+      <label for="q">Search Rooms....</label>
     </form>
   </div>
-  <p>Hello {{request.user}}</p>
+  <!-- <form action="{% url 'home' %}" method="GET">
+      <input type="text" name="q" placeholder="Search Rooms...." />
+    </form>
+  </div> -->
+  <div class="header_profile">
+    <i>Hello</i>
+    <p><a href="{% url 'profile' request.user.id  %}">{{request.user}}</a></p>
+  </div>
 
   <div class="loginout">
     {% if request.user.is_authenticated %}
