@@ -86,7 +86,7 @@ def discuss_register(request):
 
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    room_messages = room.message_set.all()
+    room_messages = room.message_set.order_by("created")
     participants = room.participants.all()
 
     if request.method == "POST":
@@ -109,21 +109,36 @@ def user_profile(request, pk):
     rooms = user.room_set.all()
     room_message = user.message_set.all()
     topics = Topic.objects.all()
-    context = {"user": user, "rooms": rooms, "room_message": room_message, "topics":topics}
+    context = {
+        "user": user,
+        "rooms": rooms,
+        "room_message": room_message,
+        "topics": topics,
+    }
     return render(request, "base/user_profile.html", context)
 
 
 @login_required(login_url="login")
 def create_room(request):
     form = RoomForm()
+    topics = Topic.objects.all()
     if request.method == "POST":
-        form = RoomForm(request.POST)
-        if form.is_valid():
-            room = form.save(commit=False)
-            room.host = request.user
-            room.save()
-            return redirect("home")
-    context = {"form": form}
+        topics_name = request.POST.get('topic')
+        topic, created = Topic.objects.get_or_create(name=topics_name)
+        Room.objects.create(
+            host=request.user,
+            topic=topic,
+            name=request.POST.get('name'),
+            description=request.POST.get('description')
+        )
+
+        # form = RoomForm(request.POST)
+        # if form.is_valid():
+        #     room = form.save(commit=False)
+        #     room.host = request.user
+        #     room.save()
+        return redirect("home")
+    context = {"form": form, "topics": topics}
     return render(request, "base/room_form.html", context)
 
 
@@ -131,18 +146,21 @@ def create_room(request):
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
+    topics = Topic.objects.all()
 
     if request.user != room.host:
         return HttpResponse("Not the owner")
 
     if request.method == "POST":
-        form = RoomForm(request.POST, instance=room)
+        topics_name = request.POST.get('topic')
+        topic, created = Topic.objects.get_or_create(name=topics_name)
+        room.name = request.POST.get('name')
+        room.topic = topic
+        room.description = request.POST.get('description')
+        room.save()
+        return redirect("home")
 
-        if form.is_valid():
-            form.save()
-            return redirect("home")
-
-    context = {"form": form}
+    context = {"form": form, "topics": topics, "room":room}
     return render(request, "base/room_form.html", context)
 
 

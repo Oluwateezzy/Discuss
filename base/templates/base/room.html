@@ -3,39 +3,67 @@
   .room-container {
     display: grid;
     grid-template-columns: 3fr 1fr;
+    padding: 10px 20px;
   }
   .message-input {
     text-align: center;
-    top: auto;
+    margin-top: 300px;
+    height: 40px;
+    position: fixed;
+    padding: 20px;
+  }
+
+  .participants {
+    padding: 0 10px;
+  }
+
+  .message-input input {
+    width: 700px;
+    height: 30px;
+    border-radius: 10px;
+  }
+  .room_content {
+    padding: 0 20px;
+  }
+  .room_description {
+    text-align: justify;
+  }
+  .message_list {
+    background-color: white;
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
   }
 </style>
 <div class="room-container">
-  <div>
+  <div class="room_content">
     <h1>{{room.name}}</h1>
-    <p>{{room.description}}</p>
+    <p class="room_description">{{room.description}}</p>
 
     <div class="comment-wrapper">
       <h3>Conversation</h3>
       <hr />
       {% for message in room_messages %}
-      <div>
+      <div class="message_list">
+        <small
+          ><a href="{% url 'room' room.id %}">@{{message.user}}</a>
+          {{message.created|timesince}}ago</small
+        >
+        <p>{{message.body}}</p>
         {% if request.user == message.user %}
         <a href="{% url 'delete-message' message.id %}">Delete</a>
         {% endif %}
-        <small>@{{message.user}} {{message.created|timesince}}ago</small>
-        <p>{{message.body}}</p>
-        <hr />
       </div>
       {% endfor %}
     </div>
-
-    {% if request.user.is_authenticated %}
-    <div class="message-input">
-      <form method="POST" action="">
-        {% csrf_token %}
-        <input type="text" name="body" placeholder="Write message..." />
-      </form>
-    </div>
+  </div>
+  {% if request.user.is_authenticated %}
+  <div class="message-input">
+    <form method="POST" action="">
+      {% csrf_token %}
+      <input type="text" name="body" placeholder="Write message..." />
+    </form>
   </div>
   <div class="participants">
     <h3 class="participants__top">
@@ -44,7 +72,7 @@
     <div class="participants__list scroll">
       {% for user in participants %}
       <p>
-        <span>@{{user.username}}</span>
+        <span><a href="{% url 'room' room.id %}">@{{user.username}}</a></span>
       </p>
       {% endfor %}
     </div>
