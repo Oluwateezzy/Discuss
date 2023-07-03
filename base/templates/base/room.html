@@ -4,6 +4,10 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
   }
+  .message-input {
+    text-align: center;
+    top: auto;
+  }
 </style>
 <div class="room-container">
   <div>
@@ -26,7 +30,7 @@
     </div>
 
     {% if request.user.is_authenticated %}
-    <div>
+    <div class="message-input">
       <form method="POST" action="">
         {% csrf_token %}
         <input type="text" name="body" placeholder="Write message..." />

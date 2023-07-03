@@ -1,4 +1,4 @@
-{% extends 'main.html' %} {% block content %} {{user.username}}
+{% extends 'main.html' %} {% block content %}
 <style>
   .profile_container {
     display: grid;
@@ -6,8 +6,13 @@
   }
 </style>
 <div class="profile_container">
-  <div>{% include 'base/topics_component.html' %}</div>
-  <div>{% include 'base/feeds_component.html' %}</div>
-  <div>{% include 'base/activiity.component.html' %}</div>
+  <div class="sidebar1 fixed-sidebar">
+    {% include 'base/topics_component.html' %}
+  </div>
+
+  <div class="middleheader">
+    {% include 'base/feeds_component.html' %}
+  </div>
+  <div class="rightbar1">{% include 'base/activiity.component.html' %}</div>
 </div>
 {% endblock %}

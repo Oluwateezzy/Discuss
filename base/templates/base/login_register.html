@@ -1,7 +1,26 @@
 {% extends 'main.html' %} {% block content %} {% if page == 'login' %}
-<div class="log_session">
+<div class="login-box">
+  <h2>Login</h2>
   <form method="POST" action="">
     {% csrf_token %}
+    <div class="user-box">
+      <label>Username</label>
+      <input type="text" name="username" required="" placeholder="Username" />
+    </div>
+    <div class="user-box">
+      <label>Username</label>
+      <input type="password" name="password" placeholder="Password" />
+    </div>
+    <div class="wrap">
+      <input type="submit" value="login" class="button" />
+    </div>
+  </form>
+  <small>Do you want to create accout?</small>
+  <small><a href="{% url 'register' %}">Sign up</a></small>
+</div>
+<!-- <div class="log_session">
+  <form method="POST" action="">
+    
     <label for="username">Username</label>
     <input type="text" placeholder="Enter Username" name="username" />
 
@@ -12,7 +31,7 @@
   </form>
   <p>Do you want to create accout?</p>
   <a href="{% url 'register' %}">Sign up</a>
-</div>
+</div> -->
 {% else %}
 <div>
   <form method="POST" action="">

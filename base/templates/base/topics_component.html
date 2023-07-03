@@ -1,14 +1,18 @@
+<!-- 
+<style>
+  .alltopic {
+  color: black;
+}
+</style> -->
  <h3>Browse Topic</h3>
     <hr />
 
-    <div>
-      <a href="{% url 'home' %}"> All </a>
-      <hr />
+    <div class="search-result">
+      <a href="{% url 'home' %}" class="alltopic"> <b>All</b> </a>
     </div>
 
     {% for topic in topics %}
-    <div>
-      <a href="{% url 'home' %}?q={{topic.name}}"> {{topic.name}} </a>
+    <div class="search-result">
+      <a href="{% url 'home' %}?q={{topic.name}}" class="alltopic"> {{topic.name}} </a>
     </div>
-    <hr />
     {% endfor %}
