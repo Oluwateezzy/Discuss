@@ -1,11 +1,14 @@
 <div>
-  {% for room in rooms %}
+  {% if room_count != 0 %} {% for room in rooms %}
   <div class="room">
+    {% if room.host.username %}
     <small
       ><a href="{% url 'profile' room.host.id %}" class="host-username"
         >@{{room.host.username}}</a
       ></small
+    >
     ><br />
+    {% endif %}
     <h3>Room: <a href="{% url 'room' room.id %}">{{room.name}}</a></h3>
     <h5>Topic: {{room.topic.name}}</h5>
     <p class="description">{{room.description}}</p>
@@ -16,5 +19,5 @@
       {% endif %}
     </span>
   </div>
-  {% endfor %}
+  {% endfor %}{% endif %}
 </div>

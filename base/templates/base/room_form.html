@@ -1,9 +1,10 @@
 {% extends 'main.html' %} {% block content %}
 
-<div>
+<div class="login-box">
+  <h2>Create Room</h2>
   <form method="post" action="">
     {% csrf_token %}
-    <div class="form_group">
+    <div class="user-box">
       <label for="room_name"> Topic </label>
       <input
         type="text"
@@ -19,16 +20,18 @@
         </select>
       </datalist>
     </div>
-    <div class="form_group">
+    <div class="user-box">
       <label for="room_name"> Room Name </label>
       {{form.name}}
     </div>
-    <div class="form_group">
+    <div class="user-box">
       <label for="room_name"> Room Description </label>
       {{form.description}}
     </div>
 
-    <input type="submit" value="submit" />
+    <div class="wrap">
+      <input type="submit" value="Create" class="button" />
+    </div>
   </form>
 </div>
 
