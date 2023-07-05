@@ -148,14 +148,11 @@ a {
 }
 
 .rightbar {
-  position: fixed;
-  overflow: scroll;
   padding: 20px;
   margin-top: 10px;
   border-radius: 10px;
 }
 .rightbar1 {
-  position: fixed;
   padding: 20px;
   margin-top: 10px;
   border-radius: 10px;
