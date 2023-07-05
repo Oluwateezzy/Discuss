@@ -19,8 +19,12 @@ from .models import Room, Topic, Message
 # {'id':3, 'name': 'Frontend developers'}
 # ]
 
-
+def landing(request):
+    return render(request, "base/landing.html")
 def home(request):
+    if "visited" not in request.session:
+        request.session["visited"] = True
+        return render(request, "base/landing.html")
     q = request.GET.get("q") if request.GET.get("q") != None else ""
 
     rooms = Room.objects.filter(
@@ -77,7 +81,7 @@ def discuss_register(request):
             user.username = user.username.lower()
             user.save()
             login(request, user)
-            return redirect('home')
+            return redirect("home")
     context = {"form": form}
     return render(request, "base/login_register.html", context)
 
@@ -101,6 +105,7 @@ def room(request, pk):
     }
     return render(request, "base/room.html", context)
 
+
 @login_required(login_url="login")
 def user_profile(request, pk):
     user = User.objects.get(id=pk)
@@ -121,13 +126,13 @@ def create_room(request):
     form = RoomForm()
     topics = Topic.objects.all()
     if request.method == "POST":
-        topics_name = request.POST.get('topic')
+        topics_name = request.POST.get("topic")
         topic, created = Topic.objects.get_or_create(name=topics_name)
         Room.objects.create(
             host=request.user,
             topic=topic,
-            name=request.POST.get('name'),
-            description=request.POST.get('description')
+            name=request.POST.get("name"),
+            description=request.POST.get("description"),
         )
 
         # form = RoomForm(request.POST)
@@ -150,15 +155,15 @@ def updateRoom(request, pk):
         return HttpResponse("Not the owner")
 
     if request.method == "POST":
-        topics_name = request.POST.get('topic')
+        topics_name = request.POST.get("topic")
         topic, created = Topic.objects.get_or_create(name=topics_name)
-        room.name = request.POST.get('name')
+        room.name = request.POST.get("name")
         room.topic = topic
-        room.description = request.POST.get('description')
+        room.description = request.POST.get("description")
         room.save()
         return redirect("home")
 
-    context = {"form": form, "topics": topics, "room":room}
+    context = {"form": form, "topics": topics, "room": room}
     return render(request, "base/room_form.html", context)
 
 
