@@ -63,6 +63,57 @@
         background-color: var(--dark-color);
         padding: 1rem 2rem;
       }
+
+      .about-section {
+        background-color: hsl(300, 100%, 0%);
+        padding: 40px 0;
+        color: white;
+      }
+
+      .description {
+        margin-bottom: 20px;
+      }
+
+      .team-members {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .team-member {
+        flex-basis: 48%;
+      }
+
+      .team-member h3 {
+        margin-bottom: 10px;
+      }
+
+      .github-link {
+        text-align: center;
+      }
+
+      .github-link a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .github-link a:hover {
+        background-color: #0056b3;
+      }
+
+      .social-links li {
+        list-style: none;
+        display: inline;
+        margin-right: 10px;
+      }
+
+      .social-links li:last-child {
+        margin-right: 0;
+      }
       .company-logo {
         font-size: 2.5rem;
         background: -webkit-linear-gradient(
@@ -598,7 +649,10 @@
           <li class="nav-item">
             <a href="{% url 'home'%}" class="nav-link">DASHBOARD</a>
           </li>
-          <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">ABOUT</a></li>
+          <li class="nav-item">
+            <a href="#feature" class="nav-link">FEATURE</a>
+          </li>
         </ul>
       </nav>
       <div class="menu-toggle">
@@ -618,18 +672,19 @@
         <div class="home-computer-container">
           <img
             class="home-computer"
-            src="https://i.ibb.co/zQJrLZy/cover-removebg-preview.png"
+            src="https://i.ibb.co/WsdHbDX/business-profit.png"
             class="home-img"
           />
         </div>
       </section>
 
       <!-- OFFER SECTION -->
-      <section class="container section-2">
+      <section id="feature" class="container section-2">
         <!-- offer 1 -->
         <div class="offer offer-1">
           <img
-            src="https://github.com/r-e-d-ant/Computer-store-website/blob/main/assets/images/offer_1.png?raw=true"
+            src="https://i.ibb.co/S7vt7B1/know.jpg"
+            alt="know"
             class="offer-img offer-1-img"
           />
           <div class="offer-description offer-desc-1">
@@ -645,8 +700,8 @@
 
         <div class="offer offer-2">
           <img
-            src="https://github.com/r-e-d-ant/Computer-store-website/blob/main/assets/images/offer_2.png?raw=true"
-            alt="a opened computer"
+            src="https://i.ibb.co/bW9pzH8/comm.png"
+            alt="comm"
             class="offer-img offer-2-img"
           />
           <div class="offer-description offer-desc-2">
@@ -662,8 +717,8 @@
 
         <div class="offer offer-1">
           <img
-            src="https://github.com/r-e-d-ant/Computer-store-website/blob/main/assets/images/offer_1.png?raw=true"
-            alt="a computer in dark with with white shadow"
+            src="https://i.ibb.co/sWyCTzh/network.jpg"
+            alt="network"
             class="offer-img offer-1-img"
           />
           <div class="offer-description offer-desc-1">
@@ -678,24 +733,67 @@
         </div>
       </section>
 
-      <section class="container section-5">
-        <h2 class="subscribe-input-label">NEWSLETTER</h2>
-        <div class="subscribe-container">
-          <input
-            type="text"
-            id="email-subscribe"
-            placeholder="Email address..."
-          />
-          <input type="submit" value="SUBSCRIBE" />
+      <section id="about" class="about-section">
+        <div class="container">
+          <h2>About Our Project</h2>
+          <p class="description">
+            The inspiration for the project stemmed from a desire to create a
+            dedicated platform for Christians to engage in meaningful
+            discussions without external influences or distractions. The goal
+            was to establish an environment where believers could freely share
+            and explore the principles and character of a true Christian life.
+          </p>
+          <p class="description">
+            In today's digital age, social media platforms often present a mix
+            of content from various sources, making it challenging for
+            individuals with specific interests and beliefs to have focused
+            discussions. The idea was to create an app that would serve as a
+            virtual community exclusively for Christians, providing them with a
+            space to connect, learn, and grow together.
+          </p>
+          <p class="description">
+            Learn more about each team member and connect with us:
+          </p>
+
+          <div class="team-members">
+            <div class="team-member">
+              <h3>Oluwafunmilayo Oluwatobiloba Olamide</h3>
+              <ul class="social-links">
+                <li>
+                  <a href="https://www.linkedin.com/in/oluwatobiloba-oluwafunmilayo-042b68218/" target="_blank"
+                    >LinkedIn</a
+                  >
+                </li>
+                <li>
+                  <a href="https://github.com/oluwateezzy" target="_blank"
+                    >GitHub</a
+                  >
+                </li>
+                <li>
+                  <a href="https://medium.com/@oluwateezzy03" target="_blank"
+                    >Medium</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="github-link">
+            <a
+              href="https://github.com/Oluwateezzy/Discuss.git"
+              target="_blank"
+              >GitHub Repository</a
+            >
+          </div>
         </div>
       </section>
     </main>
     <footer>
       <div class="container end-footer">
         <div class="copyright">
-          copyright © 2021 - Present • <b>DOWNTOWN TECH LIVER</b>
+          copyright © 2023 - Present • <b>Xoxx_world</b>
         </div>
-        <a class="designer" href="#">Thierry M</a>
+        <a class="designer" href="https://github.com/Oluwateezzy">Oluwatobiloba</a>
       </div>
     </footer>
   </body>
