@@ -5,14 +5,13 @@ Deployed Site:
 You can access our deployed site by following this link: [https://discuss-production.up.railway.app/]
 
 Final Project Blog Article:
-To gain a comprehensive understanding of our project, we have written a detailed blog article. You can read it by visiting the following link: [Link to Final Project Blog Article]
+To gain a comprehensive understanding of our project, we have written a detailed blog article. You can read it by visiting the following link: [https://www.linkedin.com/posts/oluwatobiloba-oluwafunmilayo-042b68218_the-inspiration-for-the-project-stemmed-from-activity-7084200610882818048-TdxD?utm_source=share&utm_medium=member_desktop]
 
-Authors' LinkedIn Profiles:
+Authors' LinkedIn Profile:
 Below are the LinkedIn profiles of the authors who contributed to this project:
 
-[Author 1's LinkedIn Profile]
-[Author 2's LinkedIn Profile]
-[Author 3's LinkedIn Profile]
+[https://www.linkedin.com/in/oluwatobiloba-oluwafunmilayo-042b68218/]
+
 This  guide provides step-by-step instructions on how to run the  application locally. Follow these instructions to set up your development environment and launch your Django application.
 
 Prerequisites
