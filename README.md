@@ -69,3 +69,6 @@ Start the Django development server using the following command:
 Access the Application:
 Open a web browser and visit [http://localhost:8000/](http://localhost:8000/) to access your Django application.
 Access the Django admin interface at [http://localhost:8000/admin/](http://localhost:8000/admin/) to manage your application's data.
+
+License
+The Discuss is licensed under the terms of the GPL Open Source license and is available for free.
