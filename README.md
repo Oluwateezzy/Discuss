@@ -1,3 +1,18 @@
+Introduction:
+Thank you for visiting our project repository. This README file provides essential information about our project, including a link to our deployed site, a final project blog article, and the LinkedIn profiles of the authors.
+
+Deployed Site:
+You can access our deployed site by following this link: [https://discuss-production.up.railway.app/]
+
+Final Project Blog Article:
+To gain a comprehensive understanding of our project, we have written a detailed blog article. You can read it by visiting the following link: [Link to Final Project Blog Article]
+
+Authors' LinkedIn Profiles:
+Below are the LinkedIn profiles of the authors who contributed to this project:
+
+[Author 1's LinkedIn Profile]
+[Author 2's LinkedIn Profile]
+[Author 3's LinkedIn Profile]
 This  guide provides step-by-step instructions on how to run the  application locally. Follow these instructions to set up your development environment and launch your Django application.
 
 Prerequisites
